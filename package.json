@@ -23,6 +23,7 @@
     "@angular/router": "~8.0.1",
     "ng-mat-search-bar": "^3.2.0",
     "rxjs": "~6.4.0",
+    "shelljs": "^0.8.3",
     "tslib": "^1.9.0",
     "zone.js": "~0.9.1"
   },
