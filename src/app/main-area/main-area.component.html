@@ -1,0 +1,45 @@
+<div class="mat-elevation-z8">
+
+  <div class="filter-input-container">
+    <mat-form-field class="filter-input">
+  <input matInput [(ngModel)]="searchKey" placeholder="Filter" autocomplete = false)] (keyup)="filterData()">
+  <button mat-button matSuffix mat-icon-button aria-label="Clear" *ngIf="searchKey" (click)="clearFilter()">
+    <mat-icon>close</mat-icon>
+  </button>
+  </mat-form-field>
+</div>
+  <mat-table [dataSource]="listData" matSort>
+    <ng-container matColumnDef="name">
+      <mat-header-cell *matHeaderCellDef mat-sort-header>Name</mat-header-cell>
+      <mat-cell *matCellDef="let element">{{element.name}}</mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="amount">
+      <mat-header-cell *matHeaderCellDef mat-sort-header>Amount</mat-header-cell>
+      <mat-cell *matCellDef="let element">{{element.amount}}</mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="invMonth">
+      <mat-header-cell *matHeaderCellDef mat-sort-header>Invoice Month</mat-header-cell>
+      <mat-cell *matCellDef="let element">{{element.invMonth}}</mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="invYear">
+      <mat-header-cell *matHeaderCellDef mat-sort-header>Invoice Year</mat-header-cell>
+      <mat-cell *matCellDef="let element">{{element.invYear}}</mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="details">
+      <mat-header-cell *matHeaderCellDef mat-sort-header>Details</mat-header-cell>
+      <mat-cell *matCellDef="let element">
+        <a mat-button mat-icon-button href="invoiceDetails/{{element.id}}">
+          <mat-icon>open_in_new</mat-icon>
+        </a>
+      </mat-cell>
+    </ng-container>
+
+    <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+    <mat-row *matRowDef="let row; columns : displayedColumns;"></mat-row>
+  </mat-table>
+  <mat-paginator [pageSizeOptions]="[5,10,20,100]" showFirstLastButtons></mat-paginator>
+</div>
